@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Employee List</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+</head>
+<body>
+	<div class="container">
+		<h3>Employee List</h3>
+		<hr>
+		<a th:href="@{/addEmployee}" class="btn btn-primary btn-sm mb-3">Add New Employee</a>
+		<table border="1" class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Employee First Name</th>
+					<th>Employee Last Name</th>
+					<th>Employee Email</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="employee : ${employees}">
+					<td th:text="${employee.employeeName}"></td>
+					<td th:text="${employee.employeeSurname}"></td>
+					<td th:text="${employee.employeeEmail}"></td>
+					<td><a th:href="@{/updateEmployee(employeeidmiz=${employee.employeeId})}" class="btn btn-info btn-sm">Update</a>
+					<a th:href="@{/deleteEmployee(employeeidmiz=${employee.employeeId})}" class="btn btn-danger btn-sm">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
